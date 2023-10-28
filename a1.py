@@ -6,10 +6,8 @@ penguins = pd.read_csv('penguins.csv')
 abalone = pd.read_csv('abalone.csv')
 
 
-# One-hot encode "island"
 penguins = pd.get_dummies(penguins, columns=['island'], prefix='island')
 
-# Convert "sex" to numerical values
 sex_mapping = {'Male': 0, 'Female': 1}
 penguins['sex'] = penguins['sex'].map(sex_mapping)
 
@@ -30,7 +28,7 @@ plt.savefig('abalone-classes.jpg')
 plt.show()
 
 
-X = abalone.drop('Type', axis=1)  # Features
-y = abalone['Type']  # Target variable
+X = abalone.drop('Type', axis=1)  
+y = abalone['Type']  
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
