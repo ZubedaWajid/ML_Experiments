@@ -12,9 +12,9 @@ abalone = pd.read_csv('abalone.csv')
 
 
 penguins_encoded = pd.get_dummies(penguins, columns= ['sex'])
-
+'''
 sex_mapping = {'MALE': 0, 'FEMALE': 1}
-penguins['sex'] = penguins['sex'].map(sex_mapping)
+penguins['sex'] = penguins['sex'].map(sex_mapping)'''
 
 island_mapping = {'Torgersen': 0, 'Biscoe': 1, 'Dream': 2}
 penguins['island'] = penguins['island'].map(island_mapping)
