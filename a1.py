@@ -55,7 +55,8 @@ cm = confusion_matrix(Y_test, Y_pred)
 precision = precision_score(Y_test, Y_pred, average=None,zero_division=1)
 recall = recall_score(Y_test, Y_pred, average=None,zero_division=1)
 f1 = f1_score(Y_test, Y_pred, average=None,zero_division=1)
-accuracy = accuracy_score(Y_test, Y_pred)
+f1_macro = f1_score(Y_test, Y_pred, average='macro', zero_division=1)
+f1_weighted = f1_score(Y_test, Y_pred, average='weighted', zero_division=1)
 with open("penguin-performance.txt", "a") as file:
     file.write("\n\n")
     file.write("Confusion Matrix (BASE DT):\n")
@@ -65,7 +66,9 @@ with open("penguin-performance.txt", "a") as file:
     file.write("\n\n")
     file.write("F1: " + str(f1))
     file.write("\n\n")
-    file.write("ACCURACY: " + str(accuracy))
+    file.write("F1 macro-average: " + str(f1_macro))
+    file.write("\n\n")
+    file.write("F1 macro-weighted: " + str(f1_weighted))
     file.write("\n\n")
     np.savetxt(file, cm, fmt="%d", delimiter="\t")
     file.write("\n\n")
@@ -80,7 +83,8 @@ cm = confusion_matrix(B_test, B_pred)
 precision = precision_score(B_test, B_pred, average=None,zero_division=1)
 recall = recall_score(B_test, B_pred, average=None,zero_division=1)
 f1 = f1_score(B_test, B_pred, average=None,zero_division=1)
-accuracy = accuracy_score(B_test, B_pred)
+f1_macro = f1_score(B_test, B_pred, average='macro', zero_division=1)
+f1_weighted = f1_score(B_test, B_pred, average='weighted', zero_division=1)
 with open("abalone-performance.txt", "a") as file:
     file.write("\n\n")
     file.write("Confusion Matrix (BASE DT):\n")
@@ -90,7 +94,9 @@ with open("abalone-performance.txt", "a") as file:
     file.write("\n\n")
     file.write("F1: " + str(f1))
     file.write("\n\n")
-    file.write("ACCURACY: " + str(accuracy))
+    file.write("F1 macro-average: " + str(f1_macro))
+    file.write("\n\n")
+    file.write("F1 macro-weighted: " + str(f1_weighted))
     file.write("\n\n")
     np.savetxt(file, cm, fmt="%d", delimiter="\t")
     file.write("\n\n")
@@ -118,7 +124,8 @@ best_params = grid_search_abalones.best_params_
 precision = precision_score(B_test, B_pred, average=None,zero_division=1)
 recall = recall_score(B_test, B_pred, average=None,zero_division=1)
 f1 = f1_score(B_test, B_pred, average=None,zero_division=1)
-accuracy = accuracy_score(B_test, B_pred)
+f1_macro = f1_score(B_test, B_pred, average='macro', zero_division=1)
+f1_weighted = f1_score(B_test, B_pred, average='weighted', zero_division=1)
 with open("abalone-performance.txt", "a") as file:
     file.write("\n\n")
     file.write("Confusion Matrix (TOP DT):\n" + str(best_params) + "\n")
@@ -128,8 +135,6 @@ with open("abalone-performance.txt", "a") as file:
     file.write("RECALL: " + str(recall))
     file.write("\n\n")
     file.write("F1: " + str(f1))
-    file.write("\n\n")
-    file.write("ACCURACY: " + str(accuracy))
     file.write("\n\n")
     np.savetxt(file, cm, fmt="%d", delimiter="\t")
     file.write("\n\n")
@@ -150,7 +155,8 @@ best_params = grid_search_penguins.best_params_
 precision = precision_score(Y_test, Y_pred, average=None,zero_division=1)
 recall = recall_score(Y_test, Y_pred, average=None,zero_division=1)
 f1 = f1_score(Y_test, Y_pred, average=None,zero_division=1)
-accuracy = accuracy_score(Y_test, Y_pred)
+f1_macro = f1_score(Y_test, Y_pred, average='macro', zero_division=1)
+f1_weighted = f1_score(Y_test, Y_pred, average='weighted', zero_division=1)
 with open("penguin-performance.txt", "a") as file:
     file.write("\n\n")
     file.write("Confusion Matrix (TOP DT):\n" + str(best_params) + "\n")
@@ -160,8 +166,6 @@ with open("penguin-performance.txt", "a") as file:
     file.write("RECALL: " + str(recall))
     file.write("\n\n")
     file.write("F1: " + str(f1))
-    file.write("\n\n")
-    file.write("ACCURACY: " + str(accuracy))
     file.write("\n\n")
     np.savetxt(file, cm, fmt="%d", delimiter="\t")
     file.write("\n\n")
@@ -177,7 +181,9 @@ cm = confusion_matrix(Y_test, Y_pred)
 precision = precision_score(Y_test, Y_pred, average=None,zero_division=1)
 recall = recall_score(Y_test, Y_pred, average=None,zero_division=1)
 f1 = f1_score(Y_test, Y_pred, average=None,zero_division=1)
-accuracy = accuracy_score(Y_test, Y_pred)
+f1_macro = f1_score(Y_test, Y_pred, average='macro', zero_division=1)
+f1_weighted = f1_score(Y_test, Y_pred, average='weighted', zero_division=1)
+
 with open("penguin-performance.txt", "a") as file:
     file.write("\n\n")
     file.write("Confusion Matrix (BASE MLP):\n")
@@ -187,7 +193,9 @@ with open("penguin-performance.txt", "a") as file:
     file.write("\n\n")
     file.write("F1: " + str(f1))
     file.write("\n\n")
-    file.write("ACCURACY: " + str(accuracy))
+    file.write("F1 macro-average: " + str(f1_macro))
+    file.write("\n\n")
+    file.write("F1 macro-weighted: " + str(f1_weighted))
     file.write("\n\n")
     np.savetxt(file, cm, fmt="%d", delimiter="\t")
     file.write("\n\n")
@@ -211,7 +219,6 @@ best_params = grid_search.best_params_
 precision = precision_score(Y_test, Y_pred, average=None,zero_division=1)
 recall = recall_score(Y_test, Y_pred, average=None,zero_division=1)
 f1 = f1_score(Y_test, Y_pred, average=None,zero_division=1)
-accuracy = accuracy_score(Y_test, Y_pred)
 with open("penguin-performance.txt", "a") as file:
     file.write("\n\n")
     file.write("Confusion Matrix (TOP MLP):\n" + str(best_params) + "\n")
@@ -222,7 +229,9 @@ with open("penguin-performance.txt", "a") as file:
     file.write("\n\n")
     file.write("F1: " + str(f1))
     file.write("\n\n")
-    file.write("ACCURACY: " + str(accuracy))
+    file.write("F1 macro-average: " + str(f1_macro))
+    file.write("\n\n")
+    file.write("F1 macro-weighted: " + str(f1_weighted))
     file.write("\n\n")
     np.savetxt(file, cm, fmt="%d", delimiter="\t")
     file.write("\n\n")
@@ -237,7 +246,6 @@ cm = confusion_matrix(B_test, B_pred)
 precision = precision_score(B_test, B_pred, average=None,zero_division=1)
 recall = recall_score(B_test, B_pred, average=None,zero_division=1)
 f1 = f1_score(B_test, B_pred, average=None,zero_division=1)
-accuracy = accuracy_score(B_test, B_pred)
 with open("abalone-performance.txt", "a") as file:
     file.write("\n\n")
     file.write("Confusion Matrix (BASE MLP) :\n" )
@@ -247,7 +255,9 @@ with open("abalone-performance.txt", "a") as file:
     file.write("\n\n")
     file.write("F1: " + str(f1))
     file.write("\n\n")
-    file.write("ACCURACY: " + str(accuracy))
+    file.write("F1 macro-average: " + str(f1_macro))
+    file.write("\n\n")
+    file.write("F1 macro-weighted: " + str(f1_weighted))
     file.write("\n\n")
     np.savetxt(file, cm, fmt="%d", delimiter="\t")
     file.write("\n\n")
@@ -270,7 +280,6 @@ cm = confusion_matrix(B_test, B_pred)
 precision = precision_score(B_test, B_pred, average=None,zero_division=1)
 recall = recall_score(B_test, B_pred, average=None,zero_division=1)
 f1 = f1_score(B_test, B_pred, average=None,zero_division=1)
-accuracy = accuracy_score(B_test, B_pred)
 with open("abalone-performance.txt", "a") as file:
     file.write("\n\n")
     file.write("Confusion Matrix (TOP MLP):\n " + str(best_params) + "\n")
@@ -281,23 +290,9 @@ with open("abalone-performance.txt", "a") as file:
     file.write("\n\n")
     file.write("F1: " + str(f1))
     file.write("\n\n")
-    file.write("ACCURACY: " + str(accuracy))
+    file.write("F1 macro-average: " + str(f1_macro))
+    file.write("\n\n")
+    file.write("F1 macro-weighted: " + str(f1_weighted))
     file.write("\n\n")
     np.savetxt(file, cm, fmt="%d", delimiter="\t")
     file.write("\n\n")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
